@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Protocol - Kristina & Zlatko</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #FAF8F6;
+            color: #000;
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .intro-text {
+            background: #F8F6F4;
+            border: 1px solid #000;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .intro-text p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-text strong {
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: #FFF8E8;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 3px solid #000;
+            font-size: 13px;
+        }
+
+        .info-boxes {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .info-box {
+            background: #F8F6F4;
+            border: 1px solid #000;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .box-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .info-box.active .box-header {
+            border-bottom: 1px solid #000;
+        }
+
+        .box-header:hover {
+            background: #F0EDE8;
+        }
+
+        .box-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .box-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .info-box.active .box-icon {
+            transform: rotate(180deg);
+        }
+
+        .box-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 30px;
+        }
+
+        .info-box.active .box-content {
+            max-height: 5000px;
+            padding: 25px 30px 30px 30px;
+        }
+
+        /* Small nested boxes inside main boxes */
+        .timeline-boxes {
+            display: grid;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .timeline-box {
+            background: white;
+            border: 1px solid #D0D0D0;
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .timeline-box:hover {
+            border-color: #000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .timeline-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .timeline-time {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .timeline-description {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .optional-badge {
+            display: inline-block;
+            background: #FFF8E8;
+            padding: 3px 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 10px;
+            border: 1px solid #E0D0A0;
+        }
+
+        .required-badge {
+            display: inline-block;
+            background: #FFE8E8;
+            padding: 3px 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 10px;
+            border: 1px solid #E0A0A0;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .back-link a {
+            color: #000;
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 30px;
+            display: inline-block;
+            background: #F8F6F4;
+            border: 1px solid #000;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-link a:hover {
+            background: #000;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .intro-text {
+                padding: 20px;
+            }
+
+            .box-header {
+                padding: 20px;
+            }
+
+            .box-title {
+                font-size: 12px;
+            }
+
+            .box-icon {
+                font-size: 18px;
+            }
+
+            .box-content {
+                padding: 0 20px;
+            }
+
+            .info-box.active .box-content {
+                padding: 20px;
+            }
+
+            .timeline-box {
+                padding: 15px;
+            }
+
+            .back-link {
+                margin-top: 40px;
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wedding Day Protocol</h1>
+
+        <div class="intro-text">
+            <p><strong>Dear Friends,</strong></p>
+            <p>The main celebration will take place in the evening at <strong>6:30 PM at Glamur Garden Restaurant</strong> in Bitola. This is where we would be most happy to see you!</p>
+            
+            <div class="highlight">
+                <strong>However, if you wish to experience the full traditional Macedonian wedding day,</strong> you are more than welcome to join us for the earlier celebrations. Below you will find the complete schedule for both the groom's and bride's sides.
+            </div>
+
+            <p>Please note that attending the earlier events is <strong>entirely optional</strong>. We will be equally delighted to celebrate with you at the evening reception.</p>
+                <p style="margin-top: 20px;"><strong>If you would like to join us for the earlier celebrations, please let us know via our <a href="https://forms.gle/keACUX46TpmsZBkk6" target="_blank" style="color: #000; text-decoration: underline; font-weight: 600;">RSVP form</a>.</strong></p>
+        </div>
+
+        <div class="info-boxes">
+            <!-- Protocol Box 1: Groom's Side -->
+            <div class="info-box" onclick="toggleBox(this)">
+                <div class="box-header">
+                    <span class="box-title">Groom's Side Protocol</span>
+                    <span class="box-icon">♥</span>
+                </div>
+                <div class="box-content">
+                    <div class="timeline-boxes">
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Morning Preparation
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">8:00 AM - 10:30 AM</div>
+                            <div class="timeline-description">
+                                The groom and his family prepare for the day. Traditional music, dancing, and celebrating with close family members. Location: Groom's appartment in Krushevo (Villa La Munte).
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Departure to Bride's Home
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">10:30 AM - 10:45 AM</div>
+                            <div class="timeline-description">
+                                The wedding party travels to the bride's home with music and celebration. (Approximately a 10-minute walk.)
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Ceremony at Bride's Home
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">11:00 AM - 12:00 PM</div>
+                            <div class="timeline-description">
+                                Traditional ceremonies at the bride's family home including the fetching of the bride, symbolic rituals, and celebrations with both families.
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Church Ceremony
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">12:30 PM - 13:30 PM</div>
+                            <div class="timeline-description">
+                                Religious ceremony at the church.  Location: The Church of Bogorodica, Krushevo (Approximately a 10-minute walk.)
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Evening Reception
+                                <span class="required-badge">Main Event</span>
+                            </div>
+                            <div class="timeline-time">6:30 PM onwards</div>
+                            <div class="timeline-description">
+                                <strong>This is the main celebration!</strong> Cocktail hour, dinner, traditional dances, music, and celebration at Glamur Garden Restaurant, Bitola. We would be most happy to see you here!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Protocol Box 2: Bride's Side -->
+            <div class="info-box" onclick="toggleBox(this)">
+                <div class="box-header">
+                    <span class="box-title">Bride's Side Protocol</span>
+                    <span class="box-icon">♥</span>
+                </div>
+                <div class="box-content">
+                    <div class="timeline-boxes">
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Morning Preparation
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">8:00 AM - 11:00 AM</div>
+                            <div class="timeline-description">
+                                The bride gets ready with her family and close friends. Music , food, dancing, taking photos. Location: Bride's family home (Tome Nikle 49 Krushevo).
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Welcoming the Groom
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">11:00 AM - 12:00 PM</div>
+                            <div class="timeline-description">
+                                The groom's party arrives and traditional ceremonies take place. Symbolic customs, dancing, and celebration before the bride leaves her family home.
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Church Ceremony
+                                <span class="optional-badge">Optional</span>
+                            </div>
+                            <div class="timeline-time">12:30 PM - 13:30 PM</div>
+                            <div class="timeline-description">
+                                Religious ceremony at the church. Location: The Church of Bogorodica, Krushevo (Approximately a 10-minute walk.)
+                            </div>
+                        </div>
+
+                        <div class="timeline-box">
+                            <div class="timeline-title">
+                                Evening Reception
+                                <span class="required-badge">Main Event</span>
+                            </div>
+                            <div class="timeline-time">6:30 PM onwards</div>
+                            <div class="timeline-description">
+                                <strong>This is the main celebration!</strong> Cocktail hour, dinner, traditional dances, music, and celebration at Glamur Garden Restaurant, Bitola. We would be most happy to see you here!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index-english.html">← Back to Invitation</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleBox(element) {
+            // Close all other boxes
+            const allBoxes = document.querySelectorAll('.info-box');
+            allBoxes.forEach(box => {
+                if (box !== element) {
+                    box.classList.remove('active');
+                }
+            });
+
+            // Toggle the clicked box
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Več Informacij - Kristina & Zlatko</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #FAF8F6;
+            color: #000;
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            padding: 0;
+            background: transparent;
+            border: none;
+        }
+
+        .info-boxes {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .info-box {
+            background: #F8F6F4;
+            border: 1px solid #000;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .box-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .info-box.active .box-header {
+            border-bottom: 1px solid #000;
+        }
+
+        .box-header:hover {
+            background: #F0EDE8;
+        }
+
+        .box-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .box-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .info-box.active .box-icon {
+            transform: rotate(180deg);
+        }
+
+        .box-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 30px;
+        }
+
+        .info-box.active .box-content {
+            max-height: 5000px;
+            padding: 25px 30px 30px 30px;
+        }
+
+        .box-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .box-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .box-content h4 {
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .box-content p {
+            font-size: 13px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .box-content ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .box-content li {
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .box-content a {
+            color: #000;
+            text-decoration: underline;
+            transition: opacity 0.3s ease;
+        }
+
+        .box-content a:hover {
+            opacity: 0.6;
+        }
+
+        .highlight-box {
+            background: #FFFBF5;
+            border-left: 3px solid #000;
+            padding: 18px 20px;
+            margin: 25px 0;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .warning-box {
+            background: #FFF5F5;
+            border-left: 3px solid #B22222;
+            padding: 18px 20px;
+            margin: 25px 0;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .form-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            margin: 20px 0 10px 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #000;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-btn:hover {
+            background: #000;
+            color: white;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .back-link a {
+            color: #000;
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 30px;
+            display: inline-block;
+            background: #F8F6F4;
+            border: 1px solid #000;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-link a:hover {
+            background: #000;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 40px;
+            }
+
+            .box-header {
+                padding: 20px;
+            }
+
+            .box-title {
+                font-size: 12px;
+            }
+
+            .box-icon {
+                font-size: 18px;
+            }
+
+            .box-content {
+                padding: 0 20px;
+            }
+
+            .info-box.active .box-content {
+                padding: 20px;
+            }
+
+            .form-btn {
+                display: block;
+                width: 100%;
+            }
+
+            .back-link {
+                margin-top: 40px;
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Potovanje in Načrtovanje</h1>
+
+        <!-- Travel Recommendation Box -->
+        <div class="info-box" style="margin-bottom: 40px;">
+            <div class="box-header" style="cursor: default; background: #e1d3b2;;">
+                <span class="box-title">Priporočilo za Potovanje</span>
+            </div>
+            <div class="box-content" style="max-height: none; padding: 25px 30px;">
+                <p style="text-align: center; font-size: 14px; line-height: 1.8;">
+                    <strong>Priporočamo, da prispete vsaj en dan pred poroko in ostanete vsaj en dan po njej.</strong>
+                </p>
+                <p style="text-align: center; font-size: 13px; line-height: 1.8; margin-top: 15px;">
+                    To vam bo dalo čas, da se odpočijete od potovanja, raziščete čudovito regijo in uživate v praznovanjih brez naglice. Imeli boste priložnost doživeti Kruševo in Bitolo v sproščenem tempu!
+                </p>
+            </div>
+        </div>
+
+        <!-- Getting There Box -->
+        <div class="info-box" onclick="toggleBox(this)">
+            <div class="box-header">
+                <span class="box-title"> ♡ ✈︎ Kako priti v Kruševo</span>
+                <span class="box-icon">♥</span>
+            </div>
+            <div class="box-content">
+                <h3>Z letališča Skopje (SKP)</h3>
+                <p><strong>Razdalja:</strong> ~140 km (približno 2 uri vožnje)</p>
+
+                <h4>Možnost 1: Najem avtomobila (priporočeno)</h4>
+                <ul>
+                    <li>Najem avtomobila je na voljo na letališču Skopje</li>
+                    <li>To možnost priporočamo, če želite biti bolj fleksibilni pri potovanju po državi</li>
+                    <li>Vožnja: avtocesta E-75 proti jugu, nato regionalna cesta proti Kruševu</li>
+                </ul>
+
+                <h4>Možnost 2: Zasebni prevoz</h4>
+                <ul>
+                    <li>Zasebni prevoz lahko uredite neposredno z letališča</li>
+                    <li>Cena: približno 80–100 € za do 4 osebe</li>
+                    <li>Za pomoč pri prevozu nas lahko kontaktirate</li>
+                </ul>
+
+                <h4>Možnost 3: Avtobus + taksi</h4>
+                <ul>
+                    <li>Avtobus (ali taksi) z letališča do Skopja, nato avtobus iz Skopja v Prilep (približno 2 uri)</li>
+                    <li>Nato avtobus ali taksi iz Prilepa v Kruševo (približno 30 minut, 20–25 €)</li>
+                </ul>
+
+                <h3>Z letališča Ohrid (OHD)</h3>
+                <p><strong>Razdalja:</strong> ~80 km (približno 1,5 ure vožnje)</p>
+                <ul>
+                    <li>Manjše letališče s sezonskimi leti</li>
+                    <li>Možen je najem avtomobila ali zasebni prevoz</li>
+                    <li>Za pomoč pri prevozu nas lahko kontaktirate</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Accommodation Box -->
+        <div class="info-box" onclick="toggleBox(this)">
+            <div class="box-header">
+                <span class="box-title">𖠿 Namestitev</span>
+                <span class="box-icon">♥</span>
+            </div>
+            <div class="box-content">
+                <div class="warning-box">
+                    <strong>Pomembno:</strong> V Kruševu bo potekalo svetovno prvenstvo, zato je število namestitev omejeno. Priporočamo, da uredite rezervacijo čim prej.
+                </div>
+
+                <p>
+                    Za naše goste smo že rezervirali omejeno število sob, ki so na voljo od <strong>petka do ponedeljka v Kruševu</strong>.
+                    Sobe bodo dodeljene po načelu <strong>kdor prej pride, prej melje</strong>, zato nam čim prej sporočite, če potrebujete namestitev.
+                </p>
+
+                <p>
+                    Če se udeležite le poročnega dne, priporočamo namestitev v Bitoli.
+                    Če nameravate ostati dlje in obiskati Kruševo, svetujemo zgodnjo rezervacijo.
+                </p>
+
+                <div class="highlight-box">
+                    <strong>Potrebujete pomoč?</strong><br><br>
+                    Če ne najdete proste namestitve ali potrebujete dodatne informacije, se lahko obrnete na:<br><br>
+                    📧 Dani Taleska – IG @taleskadani <br>
+                    📧 Elena Nikolovska – IG @nikolovska_elena <br><br>
+                    <em>Poskusili vam bosta pomagati pri iskanju rezervacije.</em>
+                </div>
+            </div>
+        </div>
+
+
+            <!-- Transport Box -->
+            <div class="info-box" onclick="toggleBox(this)">
+                <div class="box-header">
+                    <span class="box-title">ō͡≡o Prevoz do Poroke</span>
+                    <span class="box-icon">♥</span>
+                </div>
+                <div class="box-content">
+                    <h3>Iz Kruševega v Bitolo (Glamur Garden)</h3>
+                    <p>Organizirali bomo avtobus iz Kruševega do restavracije v Bitoli in nazaj.</p>
+
+                    <div class="highlight-box">
+                        ⚲ <strong>Odhod:</strong> Iz centra Kruševega (natančna lokacija bo objavljena)<br>
+                        ◴ <strong>Čas:</strong> 45 minut pred sprejemom (približno 17:45)<br>
+                        ◴ <strong>Vrnitev:</strong> Po poroki (okoli 1:00)
+                    </div>
+
+                    <p><strong>Da nam pomagate organizirati najboljšo logistiko, prosimo sporočite, če potrebujete prevoz:</strong></p>
+
+                    <p style="text-align: center;">
+                        <a href="https://forms.gle/1jbNFBfXz7xfuByB6" target="_blank" class="form-btn">
+                            ō͡≡o Obrazec za Prevoz
+                        </a>
+                    </p>
+                    <p style="text-align: center; font-size: 12px; font-style: italic;">
+                        Obrazec nam bo pomagal vedeti, koliko avtobusov moramo organizirati.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Practical Information Box -->
+            <div class="info-box" onclick="toggleBox(this)">
+                <div class="box-header">
+                    <span class="box-title">ꕤ Praktične informacije</span>
+                    <span class="box-icon">♥</span>
+                </div>
+                <div class="box-content">
+                    <h3>⋆. 𐙚 ˚ Kodeks oblačenja</h3>
+                    <ul>
+                        <li><strong>Formalna oblačila</strong></li>
+                        <li>Obleke</li>
+                        <li>Koktajlne ali večerne obleke za ženske</li>
+                    </ul>
+
+                    <h3>$ Valuta</h3>
+                    <ul>
+                        <li><strong>Makedonski denar (MKD)</strong></li>
+                        <li>1 € ≈ 61 MKD</li>
+                        <li>Bankomati so široko dostopni (preverite pogoje pri svoji banki)</li>
+                        <li>Kreditne kartice so sprejete na večini mest</li>
+                    </ul>
+
+                    <h3>🗣 Jezik</h3>
+                    <ul>
+                        <li>Makedonščina (cirilica)</li>
+                        <li>Veliko ljudi (skoraj vsi) govori angleško</li>
+                    </ul>
+
+                    <h3>♱ Vera</h3>
+                    <ul>
+                        <li>Pretežno pravoslavna krščanska</li>
+                        <li>Znana po čudovitih samostanih, kot sta Sveti Naum v Ohridu in Bigorski samostan</li>
+                        <li>Zanimivost: opazili boste tudi številne muslimanske znamenitosti iz osmanskega obdobja</li>
+                    </ul>
+
+                    <h3>☀︎ Vreme v juliju</h3>
+                    <ul>
+                        <li>Temperature: 25–35 °C</li>
+                        <li>Sončno in toplo</li>
+                        <li>Kruševo je zaradi gorske lege nekoliko hladnejše</li>
+                    </ul>
+
+                    <h3>☏ Telefon in internet</h3>
+                    <ul>
+                        <li>Wi-Fi je na voljo v večini hotelov in restavracij</li>
+                        <li>EU gostovanje morda ne velja – preverite pri svojem operaterju</li>
+                        <li>Lokalne SIM-kartice so na voljo na letališču in v trgovinah</li>
+                    </ul>
+                </div>
+            </div>
+
+                <!-- Explore the Region Box -->
+                <div class="info-box" onclick="toggleBox(this)">
+                    <div class="box-header">
+                        <span class="box-title">☼ Raziščite regijo</span>
+                        <span class="box-icon">♥</span>
+                    </div>
+                    <div class="box-content">
+                        <h3>ᨒ Kruševo – Kaj si ogledati</h3>
+                        <p>Izkoristite čas v Kruševu in odkrijte to čudovito gorsko mestece.</p>
+                        
+                        <ul>
+                            <li><strong>Mečkin Kamen</strong> – Ilindenski spomenik z izjemnimi razgledi</li>
+                            <li><strong>Spominski center Toše Proeski</strong> – Muzej, posvečen priljubljenemu glasbeniku</li>
+                            <li><strong>Stara čaršija</strong> – Tradicionalne obrti in lokalni spominki</li>
+                            <li><strong>Muzej Ilindenskega vstajenja</strong> – Zgodovina Ilindenskega upora</li>
+                            <li><strong>Paragliding</strong> – Za ljubitelje adrenalina</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            🔗 Več informacij: 
+                            <a href="https://wander-lush.org" target="_blank" style="color: #000; font-weight: bold;">
+                                wander-lush.org
+                            </a>
+                        </div>
+
+                        <h3>🏛️ Bitola – Sprehod in doživetja</h3>
+                        <p>Če imate čas pred ali po poroki, raziščite eno najbolj elegantnih mest.</p>
+                        
+                        <ul>
+                            <li><strong>Širok Sokak</strong> – Sprehod po peš coni s kavarnami</li>
+                            <li><strong>Herakleja Lincestis</strong> – Antično arheološko najdišče</li>
+                            <li><strong>Stara čaršija</strong> – Pristno mestno vzdušje in tradicija</li>
+                            <li><strong>Tradicionalne restavracije (npr. Šumski Feneri)</strong> – Lokalna hrana in vino</li>
+                        </ul>
+                        <div class="highlight-box">
+                        🔗  Več informacij:  <a href="https://sandaltanman.com/8-awesome-things-to-do-in-bitola-north-macedonia/" target="_blank" style="color: #000; font-weight: bold;">wander-lush.org</a>
+                        </div>
+
+                        <h3>༄.° Druga mesta, vredna obiska</h3>
+                        <ul>
+                            <li>
+                                <strong>Ohrid</strong> – Mesto ob Ohridskem jezeru, uvrščeno na Unescov seznam svetovne dediščine, znano po cerkvah in starem mestnem jedru.  
+                                <br>
+                                <a href="https://www.mywanderlust.pl/things-to-do-in-ohrid-macedonia/" target="_blank">
+                                    Več o Ohridu
+                                </a>
+                            </li>
+                            <li>
+                                <strong>Skopje</strong> – Glavno mesto z zanimivo mešanico zgodovine, kulture in sodobnega življenja.  
+                                <br>
+                                <a href="https://www.mywanderlust.pl/things-to-do-in-skopje-macedonia/" target="_blank">
+                                    Več o Skopju
+                                </a>
+                            </li>
+                            <li>
+                                <strong>Prilep</strong> – Mirno mesto, obdano z naravo in zgodovinskimi znamenitostmi.  
+                                <br>
+                                <a href="https://sandaltanman.com/things-to-do-in-prilep-north-macedonia/" target="_blank">
+                                    Več o Prilepu
+                                </a>
+                            </li>
+                        </ul>
+                    <p style="margin-top: 25px; font-style: italic; text-align: center; font-size: 14px;">
+                        ❤️ Uživajte v naših čudovitih mestih in ustvarite nepozabne spomine!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="back-link">
+            <a href="index-slovenian.html">← Nazaj na vabilo</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleBox(element) {
+            // Close all other boxes
+            const allBoxes = document.querySelectorAll('.info-box');
+            allBoxes.forEach(box => {
+                if (box !== element) {
+                    box.classList.remove('active');
+                }
+            });
+
+            // Toggle the clicked box
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
