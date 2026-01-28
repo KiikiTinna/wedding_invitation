@@ -1,528 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>More Information - Kristina & Zlatko</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Information - Kristina & Zlatko</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #FAF8F6;
-            color: #000;
-            line-height: 1.6;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #FAF8F6;
+      color: #000;
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
 
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
+    .container { max-width: 700px; margin: 0 auto; }
 
-        h1 {
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            margin-bottom: 50px;
-            padding: 0;
-            background: transparent;
-            border: none;
-        }
+    h1 {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      margin-bottom: 50px;
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
 
-        .info-boxes {
-            display: grid;
-            gap: 25px;
-            margin-bottom: 50px;
-        }
+    .info-boxes {
+      display: grid;
+      gap: 25px;
+      margin-bottom: 50px;
+    }
 
-        .info-box {
-            background: #F8F6F4;
-            border: 1px solid #000;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
+    .info-box {
+      background: #F8F6F4;
+      border: 1px solid #000;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
 
-        .info-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
+    .info-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
 
-        .box-header {
-            padding: 25px 30px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s ease;
-            user-select: none;
-            border-bottom: 1px solid transparent;
-        }
+    .box-header {
+      padding: 25px 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+    }
 
-        .info-box.active .box-header {
-            border-bottom: 1px solid #000;
-        }
+    .info-box.active .box-header { border-bottom: 1px solid #000; }
 
-        .box-header:hover {
-            background: #F0EDE8;
-        }
+    .box-header:hover { background: #F0EDE8; }
 
-        .box-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
+    .box-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
 
-        .box-icon {
-            font-size: 20px;
-            transition: transform 0.3s ease;
-            opacity: 0.7;
-        }
+    .box-icon {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+      opacity: 0.7;
+    }
 
-        .info-box.active .box-icon {
-            transform: rotate(180deg);
-        }
+    .info-box.active .box-icon { transform: rotate(180deg); }
 
-        .box-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            padding: 0 30px;
-        }
+    .box-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 30px;
+    }
 
-        .info-box.active .box-content {
-            max-height: 5000px;
-            padding: 25px 30px 30px 30px;
-        }
+    .info-box.active .box-content {
+      max-height: 5000px;
+      padding: 25px 30px 30px 30px;
+    }
 
-        .box-content h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            margin-top: 25px;
-            margin-bottom: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+    .box-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
 
-        .box-content h3:first-child {
-            margin-top: 0;
-        }
+    .box-content h3:first-child { margin-top: 0; }
 
-        .box-content h4 {
-            font-size: 14px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
+    .box-content h4 {
+      font-size: 14px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-        .box-content p {
-            font-size: 13px;
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
+    .box-content p {
+      font-size: 13px;
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
 
-        .box-content ul {
-            margin-left: 25px;
-            margin-bottom: 20px;
-        }
+    .box-content ul {
+      margin-left: 25px;
+      margin-bottom: 20px;
+    }
 
-        .box-content li {
-            font-size: 13px;
-            margin-bottom: 10px;
-            line-height: 1.7;
-        }
+    .box-content li {
+      font-size: 13px;
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
 
-        .box-content a {
-            color: #000;
-            text-decoration: underline;
-            transition: opacity 0.3s ease;
-        }
+    .box-content a {
+      color: #000;
+      text-decoration: underline;
+      transition: opacity 0.3s ease;
+    }
 
-        .box-content a:hover {
-            opacity: 0.6;
-        }
+    .box-content a:hover { opacity: 0.6; }
 
-        .highlight-box {
-            background: #FFFBF5;
-            border-left: 3px solid #000;
-            padding: 18px 20px;
-            margin: 25px 0;
-            font-size: 13px;
-            line-height: 1.8;
-        }
+    .highlight-box {
+      background: #FFFBF5;
+      border-left: 3px solid #000;
+      padding: 18px 20px;
+      margin: 25px 0;
+      font-size: 13px;
+      line-height: 1.8;
+    }
 
-        .warning-box {
-            background: #FFF5F5;
-            border-left: 3px solid #B22222;
-            padding: 18px 20px;
-            margin: 25px 0;
-            font-size: 13px;
-            line-height: 1.8;
-        }
+    .warning-box {
+      background: #FFF5F5;
+      border-left: 3px solid #B22222;
+      padding: 18px 20px;
+      margin: 25px 0;
+      font-size: 13px;
+      line-height: 1.8;
+    }
 
-        .form-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            margin: 20px 0 10px 0;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid #000;
-            background: white;
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-align: center;
-        }
+    .form-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      margin: 20px 0 10px 0;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 1px solid #000;
+      background: white;
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-align: center;
+    }
 
-        .form-btn:hover {
-            background: #000;
-            color: white;
-        }
+    .form-btn:hover { background: #000; color: white; }
 
-        .back-link {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #E0E0E0;
-        }
+    .back-link {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #E0E0E0;
+    }
 
-        .back-link a {
-            color: #000;
-            text-decoration: none;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 12px 30px;
-            display: inline-block;
-            background: #F8F6F4;
-            border: 1px solid #000;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
+    .back-link a {
+      color: #000;
+      text-decoration: none;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 12px 30px;
+      display: inline-block;
+      background: #F8F6F4;
+      border: 1px solid #000;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
 
-        .back-link a:hover {
-            background: #000;
-            color: white;
-        }
+    .back-link a:hover { background: #000; color: white; }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-                margin-bottom: 40px;
-            }
-
-            .box-header {
-                padding: 20px;
-            }
-
-            .box-title {
-                font-size: 12px;
-            }
-
-            .box-icon {
-                font-size: 18px;
-            }
-
-            .box-content {
-                padding: 0 20px;
-            }
-
-            .info-box.active .box-content {
-                padding: 20px;
-            }
-
-            .form-btn {
-                display: block;
-                width: 100%;
-            }
-
-            .back-link {
-                margin-top: 40px;
-                padding-top: 20px;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      body { padding: 30px 20px; }
+      h1 { font-size: 24px; margin-bottom: 40px; }
+      .box-header { padding: 20px; }
+      .box-title { font-size: 12px; }
+      .box-icon { font-size: 18px; }
+      .box-content { padding: 0 20px; }
+      .info-box.active .box-content { padding: 20px; }
+      .form-btn { display: block; width: 100%; }
+      .back-link { margin-top: 40px; padding-top: 20px; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Travel & Planning Information</h1>
+  <div class="container">
+    <h1>Travel & Planning</h1>
 
-
-        <div class="info-box" style="margin-bottom: 40px;">
-            <div class="box-header" style="cursor: default; background: #e1d3b2;">
-                <span class="box-title"> Recommendation</span>
-            </div>
-            <div class="box-content" style="max-height: none; padding: 25px 30px;">
-                <p style="text-align: center; font-size: 14px; line-height: 1.8;">
-                    <strong>If possible we recommend arriving at least one day before the wedding and staying at least one day after.</strong>
-                </p>
-                <p style="text-align: center; font-size: 13px; line-height: 1.8; margin-top: 15px;">
-                    This will give you time to rest from your journey, explore the beautiful region, and enjoy the celebration without feeling rushed!
-                </p>
-            </div>
-        </div>
-        
-        <div class="info-boxes">
-            <!-- Getting There Box -->
-            <div class="info-box" onclick="toggleBox(this)">
-                <div class="box-header">
-                    <span class="box-title"> ♡ ✈︎ Getting to Kruševo</span>
-                    <span class="box-icon">♥</span>
-                </div>
-                <div class="box-content">
-                    <h3>From Skopje Airport (SKP)</h3>
-                    <p><strong>Distance:</strong> ~140 km (~2 hours drive)</p>
-
-                    <h4>Option 1: Rent a Car (Recommended)</h4>
-                    <ul>
-                        <li>Car rental available at Skopje Airport</li>
-                        <li>We recomend this option if you want to move freely around the country</li>
-                        <li>Drive: Take highway E-75 south, then regional road to Kruševo</li>
-                    </ul>
-
-
-                    <h4>Option 2: Private Transfer</h4>
-                    <ul>
-                        <li>You can arrange private transport from airport</li>
-                        <li>Cost: ~€80-100 for up to 4 people</li>
-                        <li>Contact us for transport help</li>
-                    </ul>
-
-                    <h4>Option 3: Bus + Taxi</h4>
-                    <ul>
-                        <li>Bus (or Taxi) from Airport to Skopje and then Bus from Skopje to Prilep (~2 hours)</li>
-                        <li>Then Bus or Taxi from Prilep to Kruševo (~30 min, €20-25)</li>
-                        <li>More complicated</li>
-                    </ul>
-
-                    <h3>From Ohrid Airport (OHD)</h3>
-                    <p><strong>Distance:</strong> ~80 km (~1.5 hours drive)</p>
-                    <ul>
-                        <li>Smaller airport with seasonal flights</li>
-                        <li>Rent a car or arrange private transfer</li>
-                        <li>Contact us for transport help</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Accommodation Box -->
-            <div class="info-box" onclick="toggleBox(this)">
-                <div class="box-header">
-                    <span class="box-title">𖠿 Accommodation</span>
-                    <span class="box-icon">♥</span>
-                </div>
-                <div class="box-content">
-                    <div class="warning-box">
-                        <strong>Important:</strong> A World Championship event will be held in Kruševo, and accommodation is limited. Please make your arrangements as early as possible.
-                    </div>
-
-                    <p>
-                        We have already reserved a limited number of rooms for our guests, available from <strong>Friday to Monday in Krushevo</strong>.
-                        These rooms will be allocated on a <strong>first come, first served</strong> basis, so please let us know as soon as possible if you need accommodation.
-                    </p>
-
-                    <p>
-                        If you are attending only on the wedding day, we recommend staying in Bitola.
-                        If you plan to stay longer and visit Kruševo, early booking is strongly advised.
-                    </p>
-
-                    <div class="highlight-box">
-                        <strong>Need help?</strong><br><br>
-                        If you cannot find available accommodation, or need more info please contact:<br><br>
-                        📧 Dani Taleska – IG @taleskadani <br>
-                        📧 Elena Nikolovska – IG @nikolovska_elena <br><br>
-                        <em>They will try to assist you with finding a reservation.</em>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- Transport Box -->
-            <div class="info-box" onclick="toggleBox(this)">
-                <div class="box-header">
-                    <span class="box-title">ō͡≡o Transport to Wedding</span>
-                    <span class="box-icon">♥</span>
-                </div>
-                <div class="box-content">
-                    <h3>From Kruševo to Bitola (Glamur Garden)</h3>
-                    <p>We will organize shuttle buses from Kruševo to the restaurant in Bitola and back.</p>
-
-                    <div class="highlight-box">
-                        ⚲ <strong>Departure:</strong> From Kruševo city center (exact location to be announced)<br>
-                        ◴ <strong>Time:</strong> 45 minutes before reception (approximately 5:45 PM)<br>
-                        ◴ <strong>Return:</strong> After the wedding (around 1:00 AM)
-                    </div>
-
-                    <p><strong>To help us organize the best logistics, please let us know if you need transport:</strong></p>
-
-                    <p style="text-align: center;">
-                        <a href="https://forms.gle/1jbNFBfXz7xfuByB6" target="_blank" class="form-btn">
-                            ō͡≡o Transport Request Form
-                        </a>
-                    </p>
-                    <p style="text-align: center; font-size: 12px; font-style: italic;">
-                        The form will help us know how many buses to arrange.
-                    </p>
-                </div>
-            </div>
-
-
-            <!-- Practical Information Box -->
-            <div class="info-box" onclick="toggleBox(this)">
-                <div class="box-header">
-                    <span class="box-title">ꕤ Practical Information</span>
-                    <span class="box-icon">♥</span>
-                </div>
-                <div class="box-content">
-                    <h3>⋆. 𐙚 ˚ Dress Code</h3>
-                    <ul>
-                        <li><strong>Formal attire</strong></li>
-                        <li>Suits or dress shirts with trousers for men</li>
-                        <li>Cocktail or evening dresses for women</li>
-                        <li>Comfortable shoes recommended (some traditional dancing!)</li>
-                    </ul>
-
-                    <h3>$ Currency</h3>
-                    <ul>
-                        <li><strong>Macedonian Denar (MKD)</strong></li>
-                        <li>€1 ≈ 61 MKD</li>
-                        <li>ATMs widely available (Check with your ban for provisions) </li>
-                        <li>Credit cards accepted in most  (No provisions) </li>
-                    </ul>
-
-                    <h3>🗣 Language</h3>
-                    <ul>
-                        <li>Macedonian (Cyrillic alphabet)</li>
-                        <li>Many (almost everyone) speak English</li>
-                    </ul>
-
-                    <h3>♱ Religion</h3>
-                    <ul>
-                        <li>Predominantly Orthodox Christian</li>
-                        <li>Macedonia is proud of its beautiful monasteries, such as St. Naum in Ohrid and the Bigorski Monastery</li>
-                        <li>Interesting note: You will also see many Muslim landmarks and buildings from the Ottoman period</li>
-                    </ul>
-
-                    <h3>☀︎ Weather in July</h3>
-                    <ul>
-                        <li>Temperature: 25-35°C </li>
-                        <li>Sunny and warm</li>
-                        <li>Kruševo is cooler (mountain altitude)</li>
-                    </ul>
-
-                    <h3>☏ Phone & Internet</h3>
-                    <ul>
-                        <li>WiFi in most hotels and restaurants</li>
-                        <li>EU roaming may not apply - check with your provider</li>
-                        <li>Local SIM cards available at airport and shops</li>
-                    </ul>
-            </div>
-        </div>
-
-
-            <!-- Explore the Region Box -->
-            <div class="info-box" onclick="toggleBox(this)">
-                <div class="box-header">
-                    <span class="box-title">☼ Explore the Region</span>
-                    <span class="box-icon">♥</span>
-                </div>
-                <div class="box-content">
-                    <h3>ᨒ Kruševo – What to See and Visit:</h3>
-                    <p>Take advantage of your time in Kruševo and discover this beautiful mountain town!</p>
-                    
-                    <ul>
-                        <li><strong>Mečkin Kamen</strong> - Ilinden Monument with incredible views</li>
-                        <li><strong>Toše Proeski Memorial Center</strong> - Museum dedicated to Macedonia's greatest star</li>
-                        <li><strong>Old Bazaar</strong> - Traditional crafts and local souvenirs</li>
-                        <li><strong>Mečkin Kamen Museum</strong> - The Ilinden Uprising history</li>
-                        <li><strong>Paragliding</strong> - For adventure lovers!</li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        🔗 More info: <a href="https://wander-lush.org" target="_blank" style="color: #000; font-weight: bold;">wander-lush.org</a>
-                    </div>
-
-                    <h3>🏛️ Bitola – Activities and Walks:</h3>
-                    <p>If you have time before or after the wedding, explore Macedonia's most elegant city!</p>
-                    
-                    <ul>
-                        <li><strong>Širok Sokak</strong> - Walk along the pedestrian street with cafes</li>
-                        <li><strong>Heraclea Lyncestis</strong> - Ancient archaeological site</li>
-                        <li><strong>Old Bazaar</strong> - Authentic atmosphere and tradition</li>
-                        <li><strong>Traditional Restaurants like -  Sumski Feneri</strong> - Local food and wine</li>
-                    </ul>
-
-                    <div class="highlight-box">
-                        🔗 More info: <a href="https://sandaltanman.com/8-awesome-things-to-do-in-bitola-north-macedonia/" target="_blank" style="color: #000; font-weight: bold;">wander-lush.org</a>
-                    </div>
-
-                    <h3>༄.° Other Cities to Visit:</h3>
-                    <ul>
-                        <li>
-                            <strong>Ohrid</strong> – A UNESCO World Heritage city by Lake Ohrid, known for its churches and old town.  
-                            <br>
-                            <a href="https://www.mywanderlust.pl/things-to-do-in-ohrid-macedonia/" target="_blank">
-                                More about Ohrid
-                            </a>
-                        </li>
-                        <li>
-                            <strong>Skopje</strong> – The capital city, offering a mix of history, culture, and modern life.  
-                            <br>
-                            <a href="https://www.mywanderlust.pl/things-to-do-in-skopje-macedonia/" target="_blank">
-                                More about Skopje
-                            </a>
-                        </li>
-                        <li>
-                            <strong>Prilep</strong> – A relaxed town surrounded by nature and historical landmarks.  
-                            <br>
-                            <a href="https://sandaltanman.com/things-to-do-in-prilep-north-macedonia/" target="_blank">
-                                More about Prilep
-                            </a>
-                        </li>
-                    </ul>
-
-                    <p style="margin-top: 25px; font-style: italic; text-align: center; font-size: 14px;">
-                        ❤️ Enjoy our beautiful towns and create unforgettable memories!
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="back-link">
-            <a href="index-english.html">← Back to Invitation</a>
-        </div>
+    <!-- Fixed open recommendation box -->
+    <div class="info-box" style="margin-bottom: 40px;">
+      <div class="box-header" style="cursor: default; background: #e1d3b2;">
+        <span class="box-title"> ♡ Travel Recommendation ♡</span>
+      </div>
+      <div class="box-content" style="max-height: none; padding: 25px 30px;">
+        <p style="text-align: center; font-size: 14px; line-height: 1.8;">
+          <strong>We recommend arriving at least one day before the wedding and staying at least one day after.</strong>
+        </p>
+        <p style="text-align: center; font-size: 13px; line-height: 1.8; margin-top: 15px;">
+          This will give you time to rest after your journey, explore the beautiful region, and truly enjoy the experience without rushing.
+          You will have the opportunity to experience Kruševo and Bitola in a relaxed atmosphere.
+        </p>
+      </div>
     </div>
 
-    <script>
-        function toggleBox(element) {
-            // Close all other boxes
-            const allBoxes = document.querySelectorAll('.info-box');
-            allBoxes.forEach(box => {
-                if (box !== element) {
-                    box.classList.remove('active');
-                }
-            });
+    <div class="info-boxes">
 
-            // Toggle the clicked box
-            element.classList.toggle('active');
-        }
-    </script>
+      <!-- Getting There Box -->
+      <div class="info-box" onclick="toggleBox(this)">
+        <div class="box-header">
+          <span class="box-title"> ✈︎ Getting to Kruševo</span>
+          <span class="box-icon">♥</span>
+        </div>
+        <div class="box-content">
+          <h3>From Skopje Airport (SKP)</h3>
+          <p><strong>Distance:</strong> ~140 km (~2 hours drive)</p>
+
+          <h4>Option 1: Car rental (recommended)</h4>
+          <ul>
+            <li>Car rental is available directly at Skopje Airport</li>
+            <li>Route: E-75 highway south, then regional road toward Kruševo</li>
+          </ul>
+
+          <h4>Option 2: Private transfer / taxi</h4>
+          <ul>
+            <li>You can arrange private transport from the airport</li>
+            <li>Price: approximately €80–100 (up to 4 people)</li>
+            <li>Please contact us if you need assistance</li>
+          </ul>
+
+          <h4>Option 3: Public transport</h4>
+          <ul>
+            <li>Bus from the airport to Skopje, then Skopje → Prilep (approx. 2 hours)</li>
+            <li>Bus or van from Prilep → Kruševo (approx. 30 minutes)</li>
+          </ul>
+
+          <h3>From Ohrid Airport (OHD)</h3>
+          <p><strong>Distance:</strong> ~80 km (approximately 1.5 hours by car)</p>
+          <ul>
+            <li>Smaller airport with seasonal flights</li>
+            <li>Car rental or private transfer available</li>
+            <li>Please contact us if you need assistance with transportation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Accommodation Box -->
+      <div class="info-box" onclick="toggleBox(this)">
+        <div class="box-header">
+          <span class="box-title">𖠿 Accommodation</span>
+          <span class="box-icon">♥</span>
+        </div>
+        <div class="box-content">
+          <div class="warning-box">
+            <strong>Important:</strong> During this time, the World Paragliding Championship will take place in Kruševo.
+            We strongly recommend booking accommodation as early as possible.
+            <p>If you are attending only the evening celebration, we recommend staying in Bitola.</p>
+          </div>
+
+          <div class="highlight-box">
+            <strong>Need help?</strong><br><br>
+            If you cannot find available accommodation or need more info, please contact:<br><br>
+            📧 Dani Taleska – IG @taleskadani <br>
+            📧 Elena Nikolovska – IG @nikolovska_elena <br><br>
+            <em>They will try to assist you with finding a reservation.</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transport Box -->
+      <div class="info-box" onclick="toggleBox(this)">
+        <div class="box-header">
+          <span class="box-title">ō͡≡o Transportation to the Evening Celebration in Bitola</span>
+          <span class="box-icon">♥</span>
+        </div>
+        <div class="box-content">
+          <p>We will organize transportation from Kruševo to the restaurant in Bitola and back.</p>
+
+          <div class="highlight-box">
+            ⚲ <strong>Departure:</strong> From the center of Kruševo<br>
+            ◴ <strong>Time:</strong> 55 minutes before guest reception (approx. 17:35)<br>
+            ◴ <strong>Return:</strong> Around 1:00 AM on 19.07.2026
+          </div>
+
+          <p><strong>If you require transportation, please fill out the form:</strong></p>
+
+          <p style="text-align: center;">
+            <a href="https://forms.gle/1jbNFBfXz7xfuByB6" target="_blank" class="form-btn">
+              ō͡≡o Transport Request Form
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Practical Information Box -->
+      <div class="info-box" onclick="toggleBox(this)">
+        <div class="box-header">
+          <span class="box-title">ꕤ Practical Information</span>
+          <span class="box-icon">♥</span>
+        </div>
+        <div class="box-content">
+          <h3>⋆. 𐙚 ˚ Dress Code</h3>
+          <ul>
+            <li><strong>Formal attire appropriate for the occasion</strong></li>
+            <li>Suit for men</li>
+            <li>Cocktail or evening dress for women</li>
+          </ul>
+
+          <h3>$ Currency</h3>
+          <ul>
+            <li><strong>Macedonian Denar (MKD)</strong></li>
+            <li>€1 ≈ 61 MKD</li>
+            <li>ATMs are widely available (check fees with your bank)</li>
+            <li>Card payments are generally accepted</li>
+          </ul>
+
+          <h3>🗣 Language</h3>
+          <ul>
+            <li>Macedonian (Cyrillic alphabet)</li>
+            <li>English is commonly spoken</li>
+          </ul>
+
+          <h3>♱ Religion</h3>
+          <ul>
+            <li>Orthodox Christianity</li>
+            <li>Notable religious sites: St. Naum (Ohrid), Bigorski Monastery</li>
+            <li>Interesting contrast: you might see many preserved Ottoman-era Muslim buildings</li>
+          </ul>
+
+          <h3>☀︎ Weather in July</h3>
+          <ul>
+            <li>Temperature: 27–37°C</li>
+            <li>Sunny and warm</li>
+            <li>Kruševo is slightly cooler due to its mountain location</li>
+          </ul>
+
+          <h3>☏ Phone & Internet</h3>
+          <ul>
+            <li>Wi-Fi is available in most hotels and restaurants</li>
+            <li>EU roaming – check with your provider</li>
+            <li>Local SIM cards are available at the airport and in shops</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Explore the Region Box -->
+      <div class="info-box" onclick="toggleBox(this)">
+        <div class="box-header">
+          <span class="box-title">☼ Explore the Region</span>
+          <span class="box-icon">♥</span>
+        </div>
+        <div class="box-content">
+          <h3>ᨒ Kruševo – What to See</h3>
+          <p>Take time to explore this beautiful mountain town.</p>
+
+          <ul>
+            <li><strong>Mečkin Kamen</strong> – Ilinden Monument with breathtaking views</li>
+            <li><strong>Toše Proeski Memorial Center</strong> – museum dedicated to the beloved singer</li>
+            <li><strong>Nikola Martinoski Museum</strong> – art museum dedicated to one of North Macedonia’s most important modern painters</li>
+            <li><strong>Old Bazaar</strong> – traditional crafts and local souvenirs</li>
+            <li><strong>Ilinden Uprising Museum</strong> – historical insight</li>
+            <li><strong>Paragliding</strong> – for adrenaline lovers</li>
+          </ul>
+
+          <div class="highlight-box">
+            🔗 More info:
+            <a href="https://wander-lush.org" target="_blank" style="color:#000; font-weight:bold;">wander-lush.org</a>
+          </div>
+
+          <h3>🏛️ Bitola – Activities and Walks</h3>
+          <p>If you have time before or after the wedding, explore one of the region’s most elegant cities.</p>
+
+          <ul>
+            <li><strong>Širok Sokak</strong> – pedestrian street with cafés</li>
+            <li><strong>Heraclea Lyncestis</strong> – ancient archaeological site</li>
+            <li><strong>Old Bazaar</strong> – authentic local atmosphere</li>
+            <li><strong>Traditional restaurants (e.g. Šumski Feneri)</strong> – local food & drinks</li>
+          </ul>
+
+          <div class="highlight-box">
+            🔗 More info:
+            <a href="https://sandaltanman.com/8-awesome-things-to-do-in-bitola-north-macedonia/" target="_blank" style="color:#000; font-weight:bold;">
+              sandaltanman.com
+            </a>
+          </div>
+
+          <h3>༄.° Other Cities to Visit</h3>
+          <ul>
+            <li>
+              <strong>Ohrid</strong> – UNESCO World Heritage city on Lake Ohrid, famous for its churches and old town<br>
+              <a href="https://www.mywanderlust.pl/things-to-do-in-ohrid-macedonia/" target="_blank">More about Ohrid</a>
+            </li>
+            <li>
+              <strong>Skopje</strong> – capital city blending history, culture, and modern life<br>
+              <a href="https://www.mywanderlust.pl/things-to-do-in-skopje-macedonia/" target="_blank">More about Skopje</a>
+            </li>
+            <li>
+              <strong>Prilep</strong> – peaceful town surrounded by nature and historical landmarks<br>
+              <a href="https://sandaltanman.com/things-to-do-in-prilep-north-macedonia/" target="_blank">More about Prilep</a>
+            </li>
+          </ul>
+
+          <p style="margin-top: 25px; font-style: italic; text-align: center; font-size: 14px;">
+            ❤️ Enjoy our beautiful towns and create unforgettable memories!
+          </p>
+        </div>
+      </div>
+
+    <!-- Stay Connected Box -->
+    <div class="info-box" onclick="toggleBox(this)">
+    <div class="box-header">
+        <span class="box-title">♡ Stay Connected</span>
+        <span class="box-icon">♥</span>
+    </div>
+    <div class="box-content">
+        <p> We’ve created a private Facebook group where guests can exchange information, share tips, and coordinate transportation and accommodation with each other. Joining is completely optional.
+        </p>
+
+        <p style="text-align: center;">
+        <a href="https://facebook.com/groups/YOURGROUP" target="_blank" class="form-btn">
+            Join the Facebook Group
+        </a>
+        </p>
+    </div>
+    </div>
+
+
+    </div><!-- end .info-boxes -->
+
+    <div class="back-link">
+      <a href="index-english.html">← Back to Invitation</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleBox(element) {
+      const allBoxes = document.querySelectorAll('.info-boxes .info-box');
+      allBoxes.forEach(box => {
+        if (box !== element) box.classList.remove('active');
+      });
+      element.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
